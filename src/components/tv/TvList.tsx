@@ -1,14 +1,14 @@
-import { MovieProps } from "../../types/app";
+import { TVProps } from "../../types/app";
 import Loading from "../common/Loading";
 import ItemCard from "../shared/ItemCard";
 
 interface Props {
   isLoading: boolean;
   title: string;
-  movies: MovieProps[];
+  tvs: TVProps[];
 }
 
-export default function MovieList({ isLoading, title, movies }: Props) {
+export default function TvList({ isLoading, title, tvs }: Props) {
   return (
     <div>
       {isLoading ? (
@@ -17,8 +17,8 @@ export default function MovieList({ isLoading, title, movies }: Props) {
         <>
           <h2>{title}</h2>
           <ul>
-            {movies.map((movie) => (
-              <ItemCard key={movie.id} {...movie} type="movie" />
+            {tvs.map((tv) => (
+              <ItemCard key={tv.id} {...tv} type="tv" />
             ))}
           </ul>
         </>

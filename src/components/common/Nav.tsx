@@ -1,9 +1,10 @@
+import { NavLink } from "react-router-dom";
+
 export default function Nav() {
   return (
     <div>
-      <button>Now Playing</button>
-      <button>Popular</button>
-      <button>Top Rated</button>
+      <NavLink to="/movies">Movies</NavLink>
+      <NavLink to="/tv">TV Shows</NavLink>
     </div>
   );
 }
