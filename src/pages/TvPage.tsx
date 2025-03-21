@@ -6,6 +6,7 @@ import {
 } from "../api/tv";
 import { TVProps } from "../types/app";
 import TvList from "../components/tv/TvList";
+import { HelmetMeta } from "../lib/helmet";
 
 export default function TvPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +14,7 @@ export default function TvPage() {
   const [popular, setPopular] = useState<TVProps[]>([]);
   const [airingToday, setAiringToday] = useState<TVProps[]>([]);
 
-  const fetchMovies = async () => {
+  const fetchTvs = async () => {
     try {
       setIsLoading(true);
       const [top, pop, air] = await Promise.all([
@@ -21,7 +22,6 @@ export default function TvPage() {
         fetchPopularTvs(),
         fetchAiringTodayTvs(),
       ]);
-
       setTopRated(top);
       setPopular(pop);
       setAiringToday(air);
@@ -33,11 +33,15 @@ export default function TvPage() {
   };
 
   useEffect(() => {
-    fetchMovies();
+    fetchTvs();
   }, []);
 
   return (
     <>
+      <HelmetMeta
+        title="TV Series"
+        description="지금 방영 중인 인기 TV 프로그램들을 확인하세요."
+      />
       <TvList isLoading={isLoading} title="Airing Today" tvs={airingToday} />
       <TvList isLoading={isLoading} title="Popular" tvs={popular} />
       <TvList isLoading={isLoading} title="Top Rated" tvs={topRated} />

@@ -6,6 +6,7 @@ import {
   fetchTopRatedMovies,
 } from "../api/movie";
 import MovieList from "../components/movie/MovieList";
+import { HelmetMeta } from "../lib/helmet";
 
 export default function MoviePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +22,6 @@ export default function MoviePage() {
         fetchPopularMovies(),
         fetchNowPlayingMovies(),
       ]);
-
       setTopRated(top);
       setPopular(pop);
       setNowPlaying(now);
@@ -38,6 +38,10 @@ export default function MoviePage() {
 
   return (
     <>
+      <HelmetMeta
+        title="Movie"
+        description="최신 인기 영화, 상영 중 영화, 평점 높은 영화들을 만나보세요."
+      />
       <MovieList
         isLoading={isLoading}
         title="Now Playing"

@@ -3,12 +3,13 @@ import Layout from "./components/common/Layout";
 import MoviePage from "./pages/MoviePage";
 import TvPage from "./pages/TvPage";
 import GlobalStyle from "./styles/GlobalStyle";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
-      <BrowserRouter>
+      <HelmetProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="/movies" replace />} />
@@ -16,8 +17,8 @@ function App() {
             <Route path="tv" element={<TvPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </>
+      </HelmetProvider>
+    </BrowserRouter>
   );
 }
 
