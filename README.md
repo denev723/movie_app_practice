@@ -10,5 +10,5 @@
 
 ## 기술 스택
 
-- 프론트엔드: React, Redux
+- 프론트엔드: React
 - API: The Movie Database (TMDb) API
