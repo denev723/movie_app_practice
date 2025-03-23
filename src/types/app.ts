@@ -19,7 +19,7 @@ export interface TVProps extends MediaProps {
   origin_country: string[];
 }
 
-export interface MediaProps {
+export interface ItemCardProps {
   id: number;
   poster_path: string;
   vote_average: number;
@@ -27,9 +27,10 @@ export interface MediaProps {
   first_air_date?: string;
   title?: string;
   name?: string;
+  origin_country?: string[];
 }
 
-export interface ApiProps<T> {
+export interface ApiResponse<T> {
   page: number;
   results: T[];
   total_pages: number;

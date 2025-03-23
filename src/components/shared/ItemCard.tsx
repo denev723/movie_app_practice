@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { MediaProps } from "../../types/app";
+import { ItemCardProps } from "../../types/app";
 
-interface Props extends MediaProps {
+interface Props extends ItemCardProps {
   type: "movie" | "tv";
 }
 
@@ -23,10 +23,7 @@ export default function ItemCard({
       <Link to={`/${type}/${id}`}>
         <div>
           <div>
-            <img
-              src={`https://image.tmdb.org/t/p/w400${poster_path}`}
-              alt={displayTitle}
-            />
+            <img src={`https://image.tmdb.org/t/p/w400${poster_path}`} alt={displayTitle} />
           </div>
           <div>
             <h4>{displayTitle}</h4>
