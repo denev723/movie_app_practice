@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { MovieProps } from "../types/app";
+import { ItemCardProps } from "../types/app";
 import { fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies } from "../api/movie";
 import MovieList from "../components/movie/MovieList";
 import { HelmetMeta } from "../lib/helmet";
 
 export default function MoviePage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [topRated, setTopRated] = useState<MovieProps[]>([]);
-  const [popular, setPopular] = useState<MovieProps[]>([]);
-  const [nowPlaying, setNowPlaying] = useState<MovieProps[]>([]);
+  const [topRated, setTopRated] = useState<ItemCardProps[]>([]);
+  const [popular, setPopular] = useState<ItemCardProps[]>([]);
+  const [nowPlaying, setNowPlaying] = useState<ItemCardProps[]>([]);
 
   const fetchMovies = async () => {
     try {
@@ -31,9 +31,9 @@ export default function MoviePage() {
   return (
     <>
       <HelmetMeta title="Movie" description="최신 인기 영화, 상영 중 영화, 평점 높은 영화들을 만나보세요." />
-      <MovieList isLoading={isLoading} title="Now Playing" movies={nowPlaying} />
-      <MovieList isLoading={isLoading} title="Popular" movies={popular} />
-      <MovieList isLoading={isLoading} title="Top Rated" movies={topRated} />
+      <MovieList isLoading={isLoading} title="현재 상영중인 작품" movies={nowPlaying} />
+      <MovieList isLoading={isLoading} title="인기 작품" movies={popular} />
+      <MovieList isLoading={isLoading} title="최고 인기 작품" movies={topRated} />
     </>
   );
 }

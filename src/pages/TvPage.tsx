@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { TVProps } from "../types/app";
+import { ItemCardProps } from "../types/app";
 import TvList from "../components/tv/TvList";
 import { HelmetMeta } from "../lib/helmet";
 import { fetchKoreanTvs } from "../api/tv";
 
 export default function TvPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [popular, setPopular] = useState<TVProps[]>([]);
-  const [topRated, setTopRated] = useState<TVProps[]>([]);
-  const [onTheAir, setOnTheAir] = useState<TVProps[]>([]);
+  const [popular, setPopular] = useState<ItemCardProps[]>([]);
+  const [topRated, setTopRated] = useState<ItemCardProps[]>([]);
+  const [onTheAir, setOnTheAir] = useState<ItemCardProps[]>([]);
 
   const popularPage = useRef(1);
   const topRatedPage = useRef(1);
@@ -33,9 +33,9 @@ export default function TvPage() {
   return (
     <>
       <HelmetMeta title="TV Series" description="지금 방영 중인 인기 TV 프로그램들을 확인하세요." />
-      <TvList isLoading={isLoading} title="On the Air" tvs={onTheAir} />
-      <TvList isLoading={isLoading} title="Popular" tvs={popular} />
-      <TvList isLoading={isLoading} title="Top Rated" tvs={topRated} />
+      <TvList isLoading={isLoading} title="현재 방영중인 작품" tvs={onTheAir} />
+      <TvList isLoading={isLoading} title="인기 작품" tvs={popular} />
+      <TvList isLoading={isLoading} title="최고 평점 작품" tvs={topRated} />
     </>
   );
 }

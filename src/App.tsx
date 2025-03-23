@@ -4,6 +4,7 @@ import MoviePage from "./pages/MoviePage";
 import TvPage from "./pages/TvPage";
 import GlobalStyle from "./styles/GlobalStyle";
 import { HelmetProvider } from "react-helmet-async";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route index element={<Navigate to="/movies" replace />} />
             <Route path="movies" element={<MoviePage />} />
             <Route path="tv" element={<TvPage />} />
+            <Route path="search" element={<SearchPage />} />
           </Route>
         </Routes>
       </HelmetProvider>

@@ -28,10 +28,15 @@ export interface ItemCardProps {
   title?: string;
   name?: string;
   origin_country?: string[];
+  type: "movie" | "tv";
 }
 
 export interface ApiResponse<T> {
   page: number;
   results: T[];
   total_pages: number;
+}
+
+export interface SearchResult extends ItemCardProps {
+  media_type: "movie" | "tv" | "person";
 }
