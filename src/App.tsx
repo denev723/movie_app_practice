@@ -16,9 +16,9 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="/movies" replace />} />
             <Route path="movies" element={<MoviePage />} />
-            <Route path="movie/:id" element={<DetailPage type="movie" />} />
+            <Route path="movie/:id" element={<DetailPage mediaType="movie" />} />
             <Route path="tv" element={<TvPage />} />
-            <Route path="tv/:id" element={<DetailPage type="tv" />} />
+            <Route path="tv/:id" element={<DetailPage mediaType="tv" />} />
             <Route path="search" element={<SearchPage />} />
           </Route>
         </Routes>

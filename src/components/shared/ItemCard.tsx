@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ItemCardProps } from "../../types/app";
+import { getMediaYear } from "../../utils/formatDates";
 
 interface Props extends ItemCardProps {
   type: "movie" | "tv";
@@ -16,7 +17,7 @@ export default function ItemCard({
   type,
 }: Props) {
   const displayTitle = title || name;
-  const displayDate = release_date || first_air_date;
+  const displayDate = release_date || first_air_date || "";
 
   return (
     <li key={id}>
@@ -28,7 +29,7 @@ export default function ItemCard({
           <div>
             <h4>{displayTitle}</h4>
             <p>
-              {displayDate} / {vote_average}
+              {getMediaYear(displayDate)} / {vote_average}
             </p>
           </div>
         </div>

@@ -4,7 +4,7 @@ export interface MediaBasicProps {
   overview: string;
   backdrop_path: string;
   poster_path: string;
-  genre_ids: number[];
+  genres: { id: number; name: string }[];
   vote_average: number;
 }
 
@@ -13,12 +13,50 @@ export interface MovieProps extends MediaBasicProps {
   title: string;
   adult: boolean;
   release_date: string;
+  runtime: number;
+}
+
+export interface TVSeason {
+  id: number;
+  name: string;
+  air_date: string;
+  poster_path: string;
+  season_number: number;
+  episode_count: number;
 }
 
 export interface TVProps extends MediaBasicProps {
   name: string;
   first_air_date: string;
+  last_air_date: string;
+  next_episode_to_air: Object;
   origin_country: string[];
+  seasons: TVSeason[];
+}
+
+export interface WatchProviderResponse {
+  id: number;
+  results: {
+    [countryCode: string]: {
+      link: string;
+      flatrate: WatchProvider[];
+      rent?: WatchProvider[];
+      buy?: WatchProvider[];
+    };
+  };
+}
+export interface WatchProvider {
+  provider_id: number;
+  provider_name: string;
+  logo_path: string;
+}
+
+export interface VideoInfo {
+  id: string;
+  key: string;
+  name: string;
+  site: string;
+  type: string;
 }
 
 // API 응답 타입 정의

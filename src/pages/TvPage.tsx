@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { ItemCardProps } from "../types/app";
 import { HelmetMeta } from "../lib/helmet";
-import { fetchTvsByType } from "../api/tv";
 import ItemList from "../components/shared/ItemList";
+import { fetchItemsByMediaType } from "../api/common";
 
 export default function TvPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,9 +15,9 @@ export default function TvPage() {
       setIsLoading(true);
 
       const [top, pop, onAir] = await Promise.all([
-        fetchTvsByType("top_rated"),
-        fetchTvsByType("popular"),
-        fetchTvsByType("on_the_air"),
+        fetchItemsByMediaType({ type: "top_rated", mediaType: "tv" }),
+        fetchItemsByMediaType({ type: "popular", mediaType: "tv" }),
+        fetchItemsByMediaType({ type: "on_the_air", mediaType: "tv" }),
       ]);
 
       setTopRated(top);

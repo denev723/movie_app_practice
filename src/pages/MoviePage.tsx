@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { ItemCardProps } from "../types/app";
 import { HelmetMeta } from "../lib/helmet";
-import { fetchMoviesByType } from "../api/movie";
 import ItemList from "../components/shared/ItemList";
+import { fetchItemsByMediaType } from "../api/common";
 
 export default function MoviePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,9 +14,9 @@ export default function MoviePage() {
     try {
       setIsLoading(true);
       const [top, pop, now] = await Promise.all([
-        fetchMoviesByType("top_rated"),
-        fetchMoviesByType("popular"),
-        fetchMoviesByType("now_playing"),
+        fetchItemsByMediaType({ type: "top_rated", mediaType: "movie" }),
+        fetchItemsByMediaType({ type: "popular", mediaType: "movie" }),
+        fetchItemsByMediaType({ type: "now_playing", mediaType: "movie" }),
       ]);
       setTopRated(top);
       setPopular(pop);
