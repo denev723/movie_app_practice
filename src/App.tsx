@@ -5,6 +5,7 @@ import TvPage from "./pages/TvPage";
 import GlobalStyle from "./styles/GlobalStyle";
 import { HelmetProvider } from "react-helmet-async";
 import SearchPage from "./pages/SearchPage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="/movies" replace />} />
             <Route path="movies" element={<MoviePage />} />
+            <Route path="movie/:id" element={<DetailPage type="movie" />} />
             <Route path="tv" element={<TvPage />} />
+            <Route path="tv/:id" element={<DetailPage type="tv" />} />
             <Route path="search" element={<SearchPage />} />
           </Route>
         </Routes>

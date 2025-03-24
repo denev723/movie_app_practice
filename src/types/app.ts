@@ -1,4 +1,5 @@
-export interface MediaProps {
+// 기본 타입 정의
+export interface MediaBasicProps {
   id: number;
   overview: string;
   backdrop_path: string;
@@ -7,18 +8,27 @@ export interface MediaProps {
   vote_average: number;
 }
 
-export interface MovieProps extends MediaProps {
+// 영화, TV 프로그램 타입 정의
+export interface MovieProps extends MediaBasicProps {
   title: string;
   adult: boolean;
   release_date: string;
 }
 
-export interface TVProps extends MediaProps {
+export interface TVProps extends MediaBasicProps {
   name: string;
   first_air_date: string;
   origin_country: string[];
 }
 
+// API 응답 타입 정의
+export interface ApiResponse<T> {
+  page: number;
+  results: T[];
+  total_pages: number;
+}
+
+// 공통 아이템 타입 정의
 export interface ItemCardProps {
   id: number;
   poster_path: string;
@@ -31,12 +41,22 @@ export interface ItemCardProps {
   type: "movie" | "tv";
 }
 
-export interface ApiResponse<T> {
-  page: number;
-  results: T[];
-  total_pages: number;
+// 검색 결과 아이템 타입 정의
+export interface SearchResult extends ItemCardProps {
+  media_type: "movie" | "tv";
 }
 
-export interface SearchResult extends ItemCardProps {
-  media_type: "movie" | "tv" | "person";
-}
+// 검색 결과 상태 타입 정의
+export type MediaItemState = {
+  results: SearchResult[];
+  page: number;
+  totalPages: number;
+  hasMore: boolean;
+  isLoadingMore: boolean;
+};
+
+export type MediaType = "movie" | "tv";
+
+export type MediaStateMap = {
+  [key in MediaType]: MediaItemState;
+};

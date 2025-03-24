@@ -9,6 +9,5 @@ export const API_OPTIONS = {
 };
 
 export const DEFAULT_LANGUAGE = "ko-KR";
-export const DEFAULT_REGION = "KR";
 
-export const DEFAULT_QUERY = `language=${DEFAULT_LANGUAGE}&region=${DEFAULT_REGION}`;
+export const DEFAULT_QUERY = `language=${DEFAULT_LANGUAGE}`;

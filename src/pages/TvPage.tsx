@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ItemCardProps } from "../types/app";
-import TvList from "../components/tv/TvList";
 import { HelmetMeta } from "../lib/helmet";
-import { fetchKoreanTvs } from "../api/tv";
+import { fetchTvsByType } from "../api/tv";
+import ItemList from "../components/shared/ItemList";
 
 export default function TvPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,32 +10,36 @@ export default function TvPage() {
   const [topRated, setTopRated] = useState<ItemCardProps[]>([]);
   const [onTheAir, setOnTheAir] = useState<ItemCardProps[]>([]);
 
-  const popularPage = useRef(1);
-  const topRatedPage = useRef(1);
-  const onTheAirPage = useRef(1);
+  const fetchTvs = async () => {
+    try {
+      setIsLoading(true);
 
-  const seenIds = useRef(new Set<number>());
+      const [top, pop, onAir] = await Promise.all([
+        fetchTvsByType("top_rated"),
+        fetchTvsByType("popular"),
+        fetchTvsByType("on_the_air"),
+      ]);
+
+      setTopRated(top);
+      setPopular(pop);
+      setOnTheAir(onAir);
+    } catch (error) {
+      console.error("목록 불러오기 실패", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    let isMounted = true;
-    setIsLoading(true);
-
-    fetchKoreanTvs("popular", setPopular, seenIds, popularPage);
-    fetchKoreanTvs("top_rated", setTopRated, seenIds, topRatedPage);
-    fetchKoreanTvs("on_the_air", setOnTheAir, seenIds, onTheAirPage);
-
-    setIsLoading(false);
-    return () => {
-      isMounted = false;
-    };
+    fetchTvs();
   }, []);
 
   return (
     <>
       <HelmetMeta title="TV Series" description="지금 방영 중인 인기 TV 프로그램들을 확인하세요." />
-      <TvList isLoading={isLoading} title="현재 방영중인 작품" tvs={onTheAir} />
-      <TvList isLoading={isLoading} title="인기 작품" tvs={popular} />
-      <TvList isLoading={isLoading} title="최고 평점 작품" tvs={topRated} />
+      <ItemList isLoading={isLoading} title="현재 방영중인 작품" items={onTheAir} type="tv" />
+      <ItemList isLoading={isLoading} title="인기 작품" items={popular} type="tv" />
+      <ItemList isLoading={isLoading} title="최고 평점 작품" items={topRated} type="tv" />
     </>
   );
 }
