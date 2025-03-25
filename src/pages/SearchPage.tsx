@@ -4,6 +4,25 @@ import { MediaStateMap, MediaType } from "../types/app";
 import { HelmetMeta } from "../lib/helmet";
 import { searchByType } from "../api/search";
 import SearchList from "../components/search/SearchList";
+import styled from "styled-components";
+
+// styles for SearchPage
+
+const SectionWrapper = styled.section`
+  padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.base};
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+const SectionTitle = styled.h2`
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.text};
+  margin: ${({ theme }) => theme.spacing.lg} 0 ${({ theme }) => theme.spacing.md};
+
+  @media (max-width: 480px) {
+    font-size: ${({ theme }) => theme.fontSizes.base};
+  }
+`;
 
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
@@ -113,8 +132,8 @@ export default function SearchPage() {
   return (
     <>
       <HelmetMeta title={`${query} 검색 결과`} description={`${query}의 검색 결과`} />
-      <div>
-        <h2>"{query}"의 검색 결과</h2>
+      <SectionWrapper>
+        <SectionTitle>"{query}"의 검색 결과</SectionTitle>
         <SearchList
           title="영화"
           isLoading={isLoading}
@@ -129,7 +148,7 @@ export default function SearchPage() {
           mediaType="tv"
           onLoadMore={() => loadMoreByType("tv")}
         />
-      </div>
+      </SectionWrapper>
     </>
   );
 }
