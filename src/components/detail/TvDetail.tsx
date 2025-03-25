@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { makeImagePath } from "../../api/common";
 import { TVProps, WatchProvider } from "../../types/app";
 import { formatAirDates, getMediaYear } from "../../utils/formatDates";
+import noPoster from "../../assets/no-poster.png";
 
 interface Props {
   item: TVProps;
@@ -9,14 +10,35 @@ interface Props {
 }
 
 // styles for TvDetail component
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ backdrop?: string }>`
   max-width: 1200px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing.lg};
-  background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
+  position: relative;
+
+  background-color: ${({ theme }) => theme.colors.background};
+  background-image: ${({ backdrop }) => (backdrop ? `url(${backdrop})` : "none")};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7); // ✅ 어두운 필터
+    backdrop-filter: blur(4px);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   @media (max-width: 768px) {
+    max-width: 100%;
     padding: ${({ theme }) => theme.spacing.base};
   }
 `;
@@ -33,15 +55,9 @@ const FlexBox = styled.div`
 
 const Poster = styled.img`
   width: 240px;
+  aspect-ratio: 2 / 3;
   border-radius: ${({ theme }) => theme.radius.base};
   object-fit: cover;
-`;
-
-const PosterFallback = styled.div`
-  width: 240px;
-  height: 360px;
-  background-color: #333;
-  border-radius: ${({ theme }) => theme.radius.base};
 `;
 
 const Info = styled.div`
@@ -127,20 +143,16 @@ const SeasonImage = styled.img`
   aspect-ratio: 2 / 3;
 `;
 
-const SeasonImageFallback = styled.div`
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  background-color: #333;
-  border-radius: ${({ theme }) => theme.radius.sm};
-`;
-
 export default function TvDetail({ item, providers }: Props) {
-  console.log(item.seasons);
   return (
-    <Wrapper>
+    <Wrapper backdrop={makeImagePath(item.backdrop_path)}>
       <FlexBox>
         <div>
-          {item.poster_path ? <Poster src={makeImagePath(item.poster_path)} alt={item.name} /> : <PosterFallback />}
+          <Poster
+            src={item.poster_path ? `https://image.tmdb.org/t/p/w400${item.poster_path}` : noPoster}
+            alt={item.name}
+            onError={(e) => (e.currentTarget.src = noPoster)}
+          />
         </div>
         <Info>
           <h2>{item.name}</h2>
@@ -189,11 +201,11 @@ export default function TvDetail({ item, providers }: Props) {
                 {item.seasons.map((season) => (
                   <SeasonItem key={season.id}>
                     <div>
-                      {season.poster_path ? (
-                        <SeasonImage src={makeImagePath(season.poster_path)} alt={season.name} />
-                      ) : (
-                        <SeasonImageFallback />
-                      )}
+                      <SeasonImage
+                        src={season.poster_path ? `https://image.tmdb.org/t/p/w400${season.poster_path}` : noPoster}
+                        alt={season.name}
+                        onError={(e) => (e.currentTarget.src = noPoster)}
+                      />
                     </div>
                     <div>
                       <h4>{season.name}</h4>

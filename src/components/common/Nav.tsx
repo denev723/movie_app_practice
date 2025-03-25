@@ -11,9 +11,6 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
   gap: ${({ theme }) => theme.spacing.sm};
 
   @media (max-width: 480px) {

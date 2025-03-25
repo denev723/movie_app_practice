@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { makeImagePath } from "../../api/common";
 import { MovieProps, VideoInfo, WatchProvider } from "../../types/app";
 import { formatKoreanDate } from "../../utils/formatDates";
+import noPoster from "../../assets/no-poster.png";
 
 interface Props {
   item: MovieProps;
@@ -10,13 +11,32 @@ interface Props {
 }
 
 // styles for MovieDetail component
-
-const Wrapper = styled.div`
-  max-width: 1200px; // ✅ 최대 너비 제한
+const Wrapper = styled.div<{ backdrop?: string }>`
+  max-width: 1200px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing.lg};
-  background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
+  position: relative;
+
+  background-color: ${({ theme }) => theme.colors.background};
+  background-image: ${({ backdrop }) => (backdrop ? `url(${backdrop})` : "none")};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7); // ✅ 어두운 필터
+    backdrop-filter: blur(4px);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -36,15 +56,9 @@ const FlexBox = styled.div`
 
 const Poster = styled.img`
   width: 240px;
+  aspect-ratio: 2 / 3;
   border-radius: ${({ theme }) => theme.radius.base};
   object-fit: cover;
-`;
-
-const PosterFallback = styled.div`
-  width: 240px;
-  height: 360px;
-  background-color: #333;
-  border-radius: ${({ theme }) => theme.radius.base};
 `;
 
 const Info = styled.div`
@@ -111,11 +125,15 @@ const TrailerItem = styled.li`
 
 export default function MovieDetail({ item, providers, trailers }: Props) {
   return (
-    <Wrapper>
+    <Wrapper backdrop={makeImagePath(item.backdrop_path)}>
       <FlexBox>
         <div>
           <div>
-            {item.poster_path ? <Poster src={makeImagePath(item.poster_path)} alt={item.title} /> : <PosterFallback />}
+            <Poster
+              src={item.poster_path ? `https://image.tmdb.org/t/p/w400${item.poster_path}` : noPoster}
+              alt={item.title}
+              onError={(e) => (e.currentTarget.src = noPoster)}
+            />
           </div>
         </div>
         <Info>

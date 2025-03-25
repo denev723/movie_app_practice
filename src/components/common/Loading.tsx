@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
+// styles for Loading
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
