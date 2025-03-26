@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Wrapper, Menu, StyledNavLink, SearchForm, SearchInput, SearchButton } from "./Nav.styled";
 
 export default function Nav() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.currentTarget.value);
@@ -25,11 +26,17 @@ export default function Nav() {
     setQuery("");
   };
 
+  const isMoviesActive = location.pathname.startsWith("/movies") || location.pathname.startsWith("/movie");
+  const isTvActive = location.pathname.startsWith("/tv");
   return (
     <Wrapper>
       <Menu>
-        <StyledNavLink to="/movies">Movies</StyledNavLink>
-        <StyledNavLink to="/tv">TV Shows</StyledNavLink>
+        <StyledNavLink to="/movies" className={isMoviesActive ? "active" : ""}>
+          Movies
+        </StyledNavLink>
+        <StyledNavLink to="/tv" className={isTvActive ? "active" : ""}>
+          TV Shows
+        </StyledNavLink>
       </Menu>
       <SearchForm onSubmit={handleSubmit}>
         <SearchInput onChange={handleChange} value={query} type="text" placeholder="검색어를 입력해주세요..." />

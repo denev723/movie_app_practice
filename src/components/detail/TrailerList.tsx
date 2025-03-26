@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function TrailerList({ trailers }: Props) {
-  if (trailers.length > 0) return null;
+  if (!trailers.length) return null;
 
   return (
     <Container>
