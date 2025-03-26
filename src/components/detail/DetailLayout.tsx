@@ -15,8 +15,6 @@ interface Props {
 export default function DetailLayout({ item, providers, trailers, mediaType }: Props) {
   const seasonList = "seasons" in item ? item.seasons : [];
 
-  console.log(trailers);
-  console.log(mediaType);
   return (
     <>
       <Wrapper $backdrop={item.backdrop_path}>
