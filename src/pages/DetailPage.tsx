@@ -12,12 +12,12 @@ export default function DetailPage({ mediaType }: Props) {
   const { id } = useParams<{ id: string }>();
   const { isLoading, item, providers, trailers } = useMediaDetail(id!, mediaType);
 
-  if (!item) return null;
-  const title = "title" in item ? item.title : item.name;
-
   if (isLoading) {
     return <Loading />;
   }
+
+  if (!item) return null;
+  const title = "title" in item ? item.title : item.name;
 
   return (
     <>

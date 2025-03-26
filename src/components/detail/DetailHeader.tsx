@@ -1,49 +1,14 @@
-import styled from "styled-components";
 import { MovieProps, TVProps, WatchProvider } from "../../types/app";
 import noPoster from "../../assets/no-poster.png";
 import { formatAirDates, formatKoreanDate } from "../../utils/formatDates";
 import OTTList from "./OTTList";
 import { makeImagePath } from "../../utils/imagePath";
+import { FlexBox, Poster, Info, Meta } from "./DetailHeader.styled";
 
 interface Props {
   item: MovieProps | TVProps;
   providers: WatchProvider[];
 }
-
-// styles for DetailHeader component
-const FlexBox = styled.div`
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${({ theme }) => theme.spacing.lg};
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-const Poster = styled.img`
-  width: 240px;
-  aspect-ratio: 2 / 3;
-  border-radius: ${({ theme }) => theme.radius.base};
-  object-fit: cover;
-`;
-
-const Info = styled.div`
-  flex: 1;
-
-  h2 {
-    font-size: ${({ theme }) => theme.fontSizes.title};
-    margin-bottom: ${({ theme }) => theme.spacing.base}; // ✅ 제목과 메타 간 여백 추가
-  }
-`;
-
-const Meta = styled.p`
-  margin-bottom: ${({ theme }) => theme.spacing.sm}; // spacing.xs → sm
-  line-height: 1.6; // 더 넉넉하게
-`;
 
 export default function DetailHeader({ item, providers }: Props) {
   const title = "title" in item ? item.title : item.name;

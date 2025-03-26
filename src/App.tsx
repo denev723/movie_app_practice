@@ -7,7 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
 import { ThemeProvider } from "styled-components";
-import { darkTheme } from "./theme/theme";
+import { darkTheme } from "./styles/theme";
 
 function App() {
   return (
