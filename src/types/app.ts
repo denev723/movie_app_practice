@@ -3,7 +3,7 @@ export interface MediaBasicProps {
   id: number;
   overview: string;
   backdrop_path: string;
-  poster_path: string;
+  poster_path: string | null;
   genres: { id: number; name: string }[];
   vote_average: number;
 }
@@ -20,7 +20,7 @@ export interface TVSeason {
   id: number;
   name: string;
   air_date: string;
-  poster_path: string;
+  poster_path: string | null;
   season_number: number;
   episode_count: number;
 }
@@ -59,6 +59,25 @@ export interface VideoInfo {
   type: string;
 }
 
+export interface SeasonDetailInfo {
+  id: number;
+  name: string;
+  seasonName: string;
+  air_date: string;
+  overview: string;
+  poster_path: string | null;
+  episodes: Episode[];
+}
+
+export interface Episode {
+  id: number;
+  name: string;
+  episode_number: number;
+  overview: string;
+  air_date: string;
+  still_path: string | null;
+}
+
 // API 응답 타입 정의
 export interface ApiResponse<T> {
   page: number;
@@ -69,19 +88,19 @@ export interface ApiResponse<T> {
 // 공통 아이템 타입 정의
 export interface ItemCardProps {
   id: number;
-  poster_path: string;
+  poster_path: string | null;
   vote_average: number;
   release_date?: string;
   first_air_date?: string;
   title?: string;
   name?: string;
   origin_country?: string[];
-  type: "movie" | "tv";
+  type: MediaType;
 }
 
 // 검색 결과 아이템 타입 정의
 export interface SearchResult extends ItemCardProps {
-  media_type: "movie" | "tv";
+  media_type: MediaType;
 }
 
 // 검색 결과 상태 타입 정의

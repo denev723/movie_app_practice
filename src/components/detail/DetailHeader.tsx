@@ -19,7 +19,6 @@ export default function DetailHeader({ item, providers }: Props) {
   const dateTitle = "release_date" in item ? "개봉일" : "첫 방영일";
   const runtime = "runtime" in item ? item.runtime : null;
 
-  console.log(runtime);
   return (
     <FlexBox>
       <div>
