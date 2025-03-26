@@ -3,6 +3,7 @@ import { ItemCardProps } from "../../types/app";
 import { getMediaYear } from "../../utils/formatDates";
 import styled from "styled-components";
 import noPoster from "../../assets/no-poster.png";
+import { makeImagePath } from "../../utils/imagePath";
 
 interface Props extends ItemCardProps {
   type: "movie" | "tv";
@@ -103,7 +104,7 @@ export default function ItemCard({
         <CardBox>
           <PosterWrapper>
             <Poster
-              src={poster_path ? `https://image.tmdb.org/t/p/w400${poster_path}` : noPoster}
+              src={poster_path ? `${makeImagePath(poster_path, "w400")}` : noPoster}
               alt={title}
               onError={(e) => (e.currentTarget.src = noPoster)}
             />

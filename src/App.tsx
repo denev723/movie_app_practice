@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Layout from "./components/common/Layout";
+import Layout from "./components/layout/Layout";
 import MoviePage from "./pages/MoviePage";
 import TvPage from "./pages/TvPage";
 import GlobalStyle from "./styles/GlobalStyle";
@@ -7,12 +7,12 @@ import { HelmetProvider } from "react-helmet-async";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./theme/theme";
+import { darkTheme } from "./theme/theme";
 
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkTheme}>
         <GlobalStyle />
         <HelmetProvider>
           <Routes>

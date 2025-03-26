@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ItemCardProps } from "../../types/app";
-import Loading from "../common/Loading";
+import Loading from "./Loading";
 import ItemCard from "./ItemCard";
 
 interface Props<T> {

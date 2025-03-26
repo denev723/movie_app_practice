@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ItemCardProps } from "../types/app";
 import { HelmetMeta } from "../lib/helmet";
-import ItemList from "../components/shared/ItemList";
+import ItemList from "../components/common/ItemList";
 import { fetchItemsByMediaType } from "../api/common";
 
 export default function TvPage() {

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Nav from "./Nav";
+import Nav from "../common/Nav";
 import styled from "styled-components";
 
 // styles for Header

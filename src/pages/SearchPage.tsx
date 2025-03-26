@@ -11,6 +11,9 @@ import styled from "styled-components";
 const SectionWrapper = styled.section`
   padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.base};
   background-color: ${({ theme }) => theme.colors.background};
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 `;
 
 const SectionTitle = styled.h2`
@@ -18,6 +21,9 @@ const SectionTitle = styled.h2`
   font-weight: bold;
   color: ${({ theme }) => theme.colors.text};
   margin: ${({ theme }) => theme.spacing.lg} 0 ${({ theme }) => theme.spacing.md};
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   @media (max-width: 480px) {
     font-size: ${({ theme }) => theme.fontSizes.base};

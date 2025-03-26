@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { makeImagePath } from "../../api/common";
 import { TVProps, WatchProvider } from "../../types/app";
 import { formatAirDates, getMediaYear } from "../../utils/formatDates";
 import noPoster from "../../assets/no-poster.png";
+import { makeImagePath } from "../../utils/imagePath";
 
 interface Props {
   item: TVProps;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 // styles for TvDetail component
-const Wrapper = styled.div<{ backdrop?: string }>`
+const Wrapper = styled.div<{ $backdrop?: string }>`
   max-width: 1200px;
   margin: 0 auto;
   padding: ${({ theme }) => theme.spacing.lg};
@@ -18,7 +18,7 @@ const Wrapper = styled.div<{ backdrop?: string }>`
   position: relative;
 
   background-color: ${({ theme }) => theme.colors.background};
-  background-image: ${({ backdrop }) => (backdrop ? `url(${backdrop})` : "none")};
+  background-image: ${({ $backdrop }) => ($backdrop ? `url(${$backdrop})` : "none")};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -144,8 +144,9 @@ const SeasonImage = styled.img`
 `;
 
 export default function TvDetail({ item, providers }: Props) {
+  console.log(item.seasons);
   return (
-    <Wrapper backdrop={makeImagePath(item.backdrop_path)}>
+    <Wrapper $backdrop={makeImagePath(item.backdrop_path)}>
       <FlexBox>
         <div>
           <Poster
@@ -164,7 +165,7 @@ export default function TvDetail({ item, providers }: Props) {
           )}
           <Meta>
             <strong>평점 : </strong>
-            {item.vote_average ? item.vote_average : "평점 정보 없음"}
+            {item.vote_average ? item.vote_average.toFixed(2) : "평점 정보 없음"}
           </Meta>
           {item.genres.length > 0 && (
             <Meta>

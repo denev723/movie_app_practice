@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { makeImagePath } from "../../api/common";
 import { MovieProps, VideoInfo, WatchProvider } from "../../types/app";
 import { formatKoreanDate } from "../../utils/formatDates";
 import noPoster from "../../assets/no-poster.png";
+import { makeImagePath } from "../../utils/imagePath";
 
 interface Props {
   item: MovieProps;
@@ -144,12 +144,10 @@ export default function MovieDetail({ item, providers, trailers }: Props) {
               {formatKoreanDate(item.release_date)}
             </Meta>
           )}
-          {item.vote_average && (
-            <Meta>
-              <strong>평점 : </strong>
-              {item.vote_average}
-            </Meta>
-          )}
+          <Meta>
+            <strong>평점 : </strong>
+            {item.vote_average ? item.vote_average.toFixed(2) : "평점 정보 없음"}
+          </Meta>
           {item.runtime && (
             <Meta>
               <strong>런닝타임 : </strong>

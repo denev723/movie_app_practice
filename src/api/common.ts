@@ -14,5 +14,3 @@ export const fetchItemsByMediaType = async ({ type, mediaType }: Props): Promise
   );
   return res.data.results;
 };
-
-export const makeImagePath = (path: string, size: string = "w500") => `https://image.tmdb.org/t/p/${size}${path}`;

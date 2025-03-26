@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { MediaItemState, MediaType } from "../../types/app";
 import Loading from "../common/Loading";
-import ItemCard from "../shared/ItemCard";
+import ItemCard from "../common/ItemCard";
 
 interface Props {
   title: string;
