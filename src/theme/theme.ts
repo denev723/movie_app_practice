@@ -21,6 +21,7 @@ export const darkTheme = {
     base: "16px",
     lg: "24px",
     xl: "32px",
+    xxl: "48px",
   },
   radius: {
     sm: "4px",
@@ -30,6 +31,13 @@ export const darkTheme = {
   shadows: {
     card: "0 4px 8px rgba(0, 0, 0, 0.3)",
     hover: "0 8px 20px rgba(255, 255, 255, 0.1)",
+  },
+  layout: {
+    header: {
+      desktop: 146,
+      mobile: 204,
+    },
+    footer: 69,
   },
 };
 
@@ -56,6 +64,7 @@ export const lightTheme = {
     base: "16px",
     lg: "24px",
     xl: "32px",
+    xxl: "48px",
   },
   radius: {
     sm: "4px",
@@ -65,5 +74,12 @@ export const lightTheme = {
   shadows: {
     card: "0 4px 8px rgba(0, 0, 0, 0.1)",
     hover: "0 8px 20px rgba(0, 0, 0, 0.15)",
+  },
+  layout: {
+    header: {
+      desktop: 146,
+      mobile: 204,
+    },
+    footer: 69,
   },
 };

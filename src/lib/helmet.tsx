@@ -7,6 +7,7 @@ interface Props {
 
 export const HelmetMeta = ({ title, description }: Props) => {
   const fullTitle = `${title} | My Movie App`;
+
   return (
     <Helmet>
       <title>{fullTitle}</title>

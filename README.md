@@ -11,4 +11,5 @@
 ## 기술 스택
 
 - 프론트엔드: React
+- 상태관리: Zustand
 - API: The Movie Database (TMDb) API

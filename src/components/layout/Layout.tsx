@@ -5,19 +5,22 @@ import Footer from "./Footer";
 
 // styles for Layout
 const Wrap = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
+  height: 100%;
+`;
+
+const Main = styled.main`
+  height: 100%;
 `;
 
 export default function Layout() {
   return (
     <>
       <Header />
-      <main>
+      <Main>
         <Wrap>
           <Outlet />
         </Wrap>
-      </main>
+      </Main>
       <Footer />
     </>
   );

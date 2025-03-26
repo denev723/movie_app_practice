@@ -11,7 +11,9 @@ interface Props<T> {
 }
 
 const SectionWrapper = styled.section`
-  padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.base};
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.xl};
   background-color: ${({ theme }) => theme.colors.background};
 `;
 

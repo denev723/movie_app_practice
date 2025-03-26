@@ -11,10 +11,10 @@ import { darkTheme } from "./theme/theme";
 
 function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={darkTheme}>
-        <GlobalStyle />
-        <HelmetProvider>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={darkTheme}>
+          <GlobalStyle />
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Navigate to="/movies" replace />} />
@@ -25,9 +25,9 @@ function App() {
               <Route path="search" element={<SearchPage />} />
             </Route>
           </Routes>
-        </HelmetProvider>
-      </ThemeProvider>
-    </BrowserRouter>
+        </ThemeProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
