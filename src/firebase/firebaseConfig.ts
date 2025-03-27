@@ -2,10 +2,10 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-6RvKwdatLxQQzX-xC1bT2zVbFz7bn2k",
-  authDomain: "my-movie-app-fe5a3.firebaseapp.com",
-  projectId: "my-movie-app-fe5a3",
-  appId: "1:439759451394:web:77099cd1a96c70fdfebe1b",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
