@@ -1,4 +1,4 @@
-import { MediaType, MovieProps, TVProps, VideoInfo, WatchProvider } from "../../types/app";
+import { MediaType, MovieProps, TVProps, VideoInfo, WatchProvider } from "../../types/media";
 import DetailHeader from "./DetailHeader";
 import DetailOverview from "./DetailOverview";
 import TrailerList from "./TrailerList";

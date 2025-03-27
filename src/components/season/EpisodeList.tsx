@@ -1,4 +1,4 @@
-import { Episode } from "../../types/app";
+import { Episode } from "../../types/media";
 import EpisodeCard from "./EpisodeCard";
 import { ListWrapper } from "./EpisodeList.styled";
 

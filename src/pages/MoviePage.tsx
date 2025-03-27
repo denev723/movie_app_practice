@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ItemCardProps } from "../types/app";
+import { ItemCardProps } from "../types/media";
 import { HelmetMeta } from "../lib/helmet";
 import ItemList from "../components/common/ItemList";
 import { fetchItemsByMediaType } from "../api/common";

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ApiResponse, SearchResult } from "../types/app";
+import { ApiResponse, SearchResult } from "../types/media";
 import { API_OPTIONS, API_URL } from "./config";
 
 export const searchByType = async (

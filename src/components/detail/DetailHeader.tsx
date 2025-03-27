@@ -1,4 +1,4 @@
-import { MovieProps, TVProps, WatchProvider } from "../../types/app";
+import { MovieProps, TVProps, WatchProvider } from "../../types/media";
 import noPoster from "../../assets/no-poster.png";
 import { formatAirDates, formatKoreanDate } from "../../utils/formatDates";
 import OTTList from "./OTTList";

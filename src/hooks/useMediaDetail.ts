@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MovieProps, TVProps, VideoInfo, WatchProvider } from "../types/app";
+import { MovieProps, TVProps, VideoInfo, WatchProvider } from "../types/media";
 import { getMediaDetail, getMovieTrailer, getWatchProvider } from "../api/detail";
 
 export function useMediaDetail(id: string, mediaType: "movie" | "tv") {

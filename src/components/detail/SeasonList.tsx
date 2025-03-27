@@ -1,4 +1,4 @@
-import { TVSeason } from "../../types/app";
+import { TVSeason } from "../../types/media";
 import { Container, SectionTitle } from "./DetailOverview.styled";
 import { SeasonWrap } from "./SeasonList.styled";
 import SeasonItem from "./SeasonItem";

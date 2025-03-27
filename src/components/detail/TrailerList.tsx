@@ -1,4 +1,4 @@
-import { VideoInfo } from "../../types/app";
+import { VideoInfo } from "../../types/media";
 import { Container, SectionTitle } from "./DetailOverview.styled";
 import { TrailerWrap, TrailerItem } from "./TrailerList.styled";
 

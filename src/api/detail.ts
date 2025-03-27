@@ -7,7 +7,7 @@ import {
   VideoInfo,
   WatchProvider,
   WatchProviderResponse,
-} from "../types/app";
+} from "../types/media";
 import { API_OPTIONS, API_URL, DEFAULT_QUERY } from "./config";
 
 type MediaDetail<T extends MediaType> = T extends "movie" ? MovieProps : TVProps;

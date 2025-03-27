@@ -1,4 +1,4 @@
-import { WatchProvider } from "../../types/app";
+import { WatchProvider } from "../../types/media";
 import { makeImagePath } from "../../utils/imagePath";
 import { SectionTitle, Providers } from "./OTTList.styled";
 

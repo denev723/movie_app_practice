@@ -1,4 +1,4 @@
-import { MediaItemState, MediaType } from "../../types/app";
+import { MediaItemState, MediaType } from "../../types/media";
 import Loading from "../common/Loading";
 import ItemCard from "../common/ItemCard";
 import { Empty, List, MoreButton, Section, Title } from "./SearchList.styled";

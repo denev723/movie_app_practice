@@ -1,4 +1,4 @@
-import { ItemCardProps } from "../../types/app";
+import { ItemCardProps } from "../../types/media";
 import { getMediaYear } from "../../utils/formatDates";
 import noPoster from "../../assets/no-poster.png";
 import { makeImagePath } from "../../utils/imagePath";

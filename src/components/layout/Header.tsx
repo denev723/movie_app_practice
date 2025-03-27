@@ -14,8 +14,8 @@ export default function Header() {
             </h1>
           </LogoBox>
           <AuthBox>
-            <StyledLink to="/login">로그인</StyledLink>
-            <StyledLink to="/register">회원가입</StyledLink>
+            <StyledLink to="/signIn">로그인</StyledLink>
+            <StyledLink to="/signUp">회원가입</StyledLink>
           </AuthBox>
         </TopBar>
         <Nav />

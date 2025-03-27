@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MediaStateMap, MediaType } from "../types/app";
+import { MediaStateMap, MediaType } from "../types/media";
 import { searchByType } from "../api/search";
 
 export function useSearchMedia(query: string) {

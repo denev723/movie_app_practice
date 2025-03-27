@@ -1,4 +1,4 @@
-import { MovieProps, TVProps } from "../../types/app";
+import { MovieProps, TVProps } from "../../types/media";
 import { Container, SectionTitle, Overview } from "./DetailOverview.styled";
 
 interface Props {

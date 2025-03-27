@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SeasonDetailInfo } from "../types/app";
+import { SeasonDetailInfo } from "../types/media";
 import { getMediaDetail, getSeasonDetail } from "../api/detail";
 
 export function useSeasonDetail(tvId: string, seasonNumber: string) {

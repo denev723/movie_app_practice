@@ -1,4 +1,4 @@
-import { ItemCardProps } from "../../types/app";
+import { ItemCardProps } from "../../types/media";
 import Loading from "./Loading";
 import ItemCard from "./ItemCard";
 import { SectionWrapper, ItemList } from "./ItemSection.styled";

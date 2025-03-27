@@ -9,6 +9,7 @@ import DetailPage from "./pages/DetailPage";
 import { ThemeProvider } from "styled-components";
 import { darkTheme } from "./styles/theme";
 import SeasonDetail from "./components/season/SeasonDetail";
+import SignPage from "./pages/SignPage";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
               <Route path="tv/:id" element={<DetailPage mediaType="tv" />} />
               <Route path="tv/:tvId/season/:seasonNumber" element={<SeasonDetail />} />
               <Route path="search" element={<SearchPage />} />
+              <Route path="signIn" element={<SignPage signType="signin" />} />
+              <Route path="signUp" element={<SignPage signType="signup" />} />
             </Route>
           </Routes>
         </ThemeProvider>

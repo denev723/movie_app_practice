@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ApiResponse, ItemCardProps } from "../types/app";
+import { ApiResponse, ItemCardProps } from "../types/media";
 import { API_OPTIONS, API_URL, DEFAULT_QUERY } from "./config";
 
 interface Props {

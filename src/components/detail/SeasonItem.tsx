@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import noPoster from "../../assets/no-poster.png";
-import { TVSeason } from "../../types/app";
+import { TVSeason } from "../../types/media";
 import { getMediaYear } from "../../utils/formatDates";
 import { makeImagePath } from "../../utils/imagePath";
 import { Container, SeasonImage, SeasonInfo, SeasonTitle } from "./SeasonItem.styled";

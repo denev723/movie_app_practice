@@ -1,4 +1,4 @@
-import { Episode } from "../../types/app";
+import { Episode } from "../../types/media";
 import { makeImagePath } from "../../utils/imagePath";
 import noPoster from "../../assets/no-poster.png";
 import { Card, Thumbnail, Info, Title, Meta, Overview } from "./EpisodeCard.styled";
