@@ -1,6 +1,19 @@
 import { useState } from "react";
 import { useAuthStore } from "../../store/authStore";
 import { useNavigate } from "react-router";
+import {
+  AuthContainer,
+  AuthTitle,
+  AuthForm,
+  Input,
+  Button,
+  ErrorMessage,
+  SocialButton,
+  SwitchContainer,
+  SwitchLink,
+  ButtonsContainer,
+} from "./Sign.styled";
+import { FaGithub } from "react-icons/fa";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -46,11 +59,11 @@ export default function SignIn() {
   };
 
   return (
-    <div>
-      <h1>로그인</h1>
-      <form onSubmit={handleSubmit}>
-        <input id="email" name="email" onChange={handleChange} value={email} type="email" placeholder="이메일 주소" />
-        <input
+    <AuthContainer>
+      <AuthTitle>로그인</AuthTitle>
+      <AuthForm onSubmit={handleSubmit}>
+        <Input id="email" name="email" onChange={handleChange} value={email} type="email" placeholder="이메일 주소" />
+        <Input
           id="password"
           name="password"
           onChange={handleChange}
@@ -58,12 +71,19 @@ export default function SignIn() {
           type="password"
           placeholder="비밀번호"
         />
-        <button type="submit">로그인</button>
-      </form>
-      {(error || firebaseError) && <p>{error || firebaseError}</p>}
-      <div>
-        <button onClick={handleGithubClick}>GitHub 계정으로 로그인</button>
-      </div>
-    </div>
+        <Button type="submit">로그인</Button>
+        {(error || firebaseError) && <ErrorMessage>{error || firebaseError}</ErrorMessage>}
+
+        <ButtonsContainer>
+          <SocialButton type="button" onClick={handleGithubClick}>
+            <FaGithub /> GitHub 계정으로 로그인
+          </SocialButton>
+        </ButtonsContainer>
+
+        <SwitchContainer>
+          계정이 없으신가요?<SwitchLink onClick={() => navigate("/signup")}>회원가입</SwitchLink>
+        </SwitchContainer>
+      </AuthForm>
+    </AuthContainer>
   );
 }

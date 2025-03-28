@@ -1,6 +1,19 @@
 import { useState } from "react";
 import { useAuthStore } from "../../store/authStore";
 import { useNavigate } from "react-router";
+import {
+  AuthContainer,
+  AuthTitle,
+  AuthForm,
+  Input,
+  Button,
+  ErrorMessage,
+  SocialButton,
+  SwitchContainer,
+  SwitchLink,
+  ButtonsContainer,
+} from "./Sign.styled";
+import { FaGithub } from "react-icons/fa";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -55,11 +68,11 @@ export default function SignUp() {
   };
 
   return (
-    <div>
-      <h1>회원가입</h1>
-      <form onSubmit={handleSubmit}>
-        <input name="email" id="email" onChange={handleCange} value={email} type="email" placeholder="이메일" />
-        <input
+    <AuthContainer>
+      <AuthTitle>회원가입</AuthTitle>
+      <AuthForm onSubmit={handleSubmit}>
+        <Input name="email" id="email" onChange={handleCange} value={email} type="email" placeholder="이메일" />
+        <Input
           name="password"
           id="password"
           onChange={handleCange}
@@ -67,7 +80,7 @@ export default function SignUp() {
           type="password"
           placeholder="비밀번호"
         />
-        <input
+        <Input
           name="vPassword"
           id="password2"
           onChange={handleCange}
@@ -75,12 +88,19 @@ export default function SignUp() {
           type="password"
           placeholder="비밀번호 확인"
         />
-        <button type="submit">회원가입</button>
-      </form>
-      {(error || firebaseError) && <p>{error || firebaseError}</p>}
-      <div>
-        <button onClick={handleGithubClick}>GitHub 계정으로 회원가입</button>
-      </div>
-    </div>
+        <Button type="submit">회원가입</Button>
+        {(error || firebaseError) && <ErrorMessage>{error || firebaseError}</ErrorMessage>}
+
+        <ButtonsContainer>
+          <SocialButton type="button" onClick={handleGithubClick}>
+            <FaGithub /> GitHub 계정으로 회원가입
+          </SocialButton>
+        </ButtonsContainer>
+
+        <SwitchContainer>
+          이미 계정이 있으신가요?<SwitchLink onClick={() => navigate("/signin")}>로그인</SwitchLink>
+        </SwitchContainer>
+      </AuthForm>
+    </AuthContainer>
   );
 }
