@@ -1,26 +1,24 @@
 import styled from "styled-components";
+import theme from "../styles/theme";
 
-export const SectionWrapper = styled.section`
+export const SectionWrapper = styled.div`
   max-width: 1200px;
-  min-height: 100vh;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.base};
-  background-color: ${({ theme }) => theme.colors.background};
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  font-weight: bold;
-  color: ${({ theme }) => theme.colors.text};
-  margin: ${({ theme }) => theme.spacing.lg} 0 ${({ theme }) => theme.spacing.md};
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  font-size: ${theme.fontSize.xxl};
+  font-weight: ${theme.fontWeight.bold};
+  margin-bottom: ${theme.spacing.xl};
+  color: ${theme.colors.text.primary};
 
-  @media (max-width: 480px) {
-    font-size: ${({ theme }) => theme.fontSizes.base};
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    font-size: ${theme.fontSize.xl};
+    margin-bottom: ${theme.spacing.lg};
+  }
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    font-size: ${theme.fontSize.lg};
+    margin-bottom: ${theme.spacing.md};
   }
 `;

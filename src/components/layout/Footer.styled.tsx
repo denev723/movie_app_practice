@@ -1,14 +1,19 @@
 import styled from "styled-components";
+import theme from "../../styles/theme";
 
 export const FooterWrapper = styled.footer`
   width: 100%;
-  padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.base};
-  background-color: ${({ theme }) => theme.colors.surface};
+  background-color: ${theme.colors.background.dark};
+  padding: ${theme.spacing.lg} 0;
+  margin-top: ${theme.spacing.xxl};
   text-align: center;
-  margin-top: auto;
+  border-top: 1px solid ${theme.colors.border};
 `;
 
 export const FooterText = styled.p`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.mutedText};
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.fontSize.xs};
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 ${theme.spacing.md};
 `;

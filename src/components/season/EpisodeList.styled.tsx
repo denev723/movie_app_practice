@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import theme from "../../styles/theme";
 
-export const ListWrapper = styled.div`
+export const ListWrapper = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
-  margin-top: ${({ theme }) => theme.spacing.lg};
-  position: relative;
+  gap: ${theme.spacing.md};
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    gap: ${theme.spacing.sm};
+  }
 `;

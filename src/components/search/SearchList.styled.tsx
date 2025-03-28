@@ -1,49 +1,74 @@
 import styled from "styled-components";
+import theme from "../../styles/theme";
 
 export const Section = styled.section`
-  background-color: ${({ theme }) => theme.colors.background};
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${theme.spacing.xxl}; // 섹션 간 간격 증가
 `;
 
 export const Title = styled.h3`
-  font-size: ${({ theme }) => theme.fontSizes.lg};
-  color: ${({ theme }) => theme.colors.text};
-  margin-bottom: ${({ theme }) => theme.spacing.base};
+  font-size: ${theme.fontSize.xl};
+  font-weight: ${theme.fontWeight.bold};
+  margin-bottom: ${theme.spacing.xl}; // 제목과 아이템 사이 간격 증가
+  color: ${theme.colors.text.primary};
+  position: relative;
+  padding-left: ${theme.spacing.md}; // 약간 더 여백
 
-  @media (max-width: 480px) {
-    font-size: ${({ theme }) => theme.fontSizes.base};
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px; // 약간 두껍게
+    background-color: ${theme.colors.primary};
+    border-radius: ${theme.borderRadius.small};
   }
-`;
 
-export const Empty = styled.p`
-  color: ${({ theme }) => theme.colors.mutedText};
-  text-align: center;
-  padding: ${({ theme }) => theme.spacing.lg};
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    font-size: ${theme.fontSize.lg};
+    margin-bottom: ${theme.spacing.lg}; // 모바일에서도 충분한 간격
+    padding-left: ${theme.spacing.sm};
+  }
 `;
 
 export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: ${({ theme }) => theme.spacing.base};
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  gap: ${theme.spacing.md};
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: ${theme.spacing.sm};
+  }
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: ${theme.spacing.xs};
+  }
+`;
+
+export const Empty = styled.p`
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.fontSize.md};
+  text-align: center;
+  padding: ${theme.spacing.xl} 0;
 `;
 
 export const MoreButton = styled.button`
-  margin: ${({ theme }) => theme.spacing.xl} auto 0; // 상단 여백 크게
   display: block;
-  padding: ${({ theme }) => theme.spacing.base} ${({ theme }) => theme.spacing.xl}; // 버튼 크기 업
-  background-color: ${({ theme }) => theme.colors.accent};
-  color: #fff;
-  border: none;
-  border-radius: ${({ theme }) => theme.radius.base};
-  font-size: ${({ theme }) => theme.fontSizes.base}; // 글씨 크기 약간 키움
-  font-weight: 600;
+  margin: ${theme.spacing.xl} auto 0; // 상단 여백 증가
+  padding: ${theme.spacing.sm} ${theme.spacing.lg};
+  background-color: transparent;
+  color: ${theme.colors.text.primary};
+  border: 1px solid ${theme.colors.border};
+  border-radius: ${theme.borderRadius.medium};
+  font-size: ${theme.fontSize.sm};
+  font-weight: ${theme.fontWeight.medium};
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: ${theme.transition.default};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.accent}cc; // 살짝 투명도
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: ${theme.colors.text.secondary};
   }
 `;
