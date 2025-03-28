@@ -1,40 +1,66 @@
 import styled from "styled-components";
-import { makeImagePath } from "../../utils/imagePath";
+import theme from "../../styles/theme";
 
 export const Wrapper = styled.div<{ $backdrop?: string }>`
-  min-height: 100vh;
-  padding: ${({ theme }) => theme.spacing.xl};
-  color: ${({ theme }) => theme.colors.text};
+  min-height: calc(100vh - 100px);
+  width: 100%;
+  padding: ${theme.spacing.xxl} ${theme.spacing.xl};
   position: relative;
-  background-color: ${({ theme }) => theme.colors.background};
-  background-image: ${({ $backdrop }) => ($backdrop ? `url(${makeImagePath($backdrop, "w1920")})` : "none")};
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 
   &::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7); // ✅ 어두운 필터
-    backdrop-filter: blur(4px);
-    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: ${({ $backdrop }) => ($backdrop ? `url(${$backdrop})` : "none")};
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: -1;
+    filter: blur(10px);
   }
 
-  > * {
-    position: relative;
-    z-index: 1;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      ${theme.colors.background.dark} 0%,
+      transparent 20%,
+      transparent 80%,
+      ${theme.colors.background.dark} 100%
+    );
+    z-index: -1;
   }
 
-  @media (max-width: 768px) {
-    max-width: 100%;
-    padding: ${({ theme }) => theme.spacing.base};
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    padding: ${theme.spacing.xl} ${theme.spacing.md};
+  }
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: ${theme.spacing.lg} ${theme.spacing.sm};
   }
 `;
 
 export const ContentSection = styled.div`
-  margin-top: ${({ theme }) => theme.spacing.xl}; // 전체 줄거리-트레일러 영역 위 간격
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.lg}; // 내부 간격도 추가
+  gap: ${theme.spacing.xxl}; // 섹션 간 간격 증가
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    gap: ${theme.spacing.xl}; // 태블릿에서도 적절한 간격
+  }
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    gap: ${theme.spacing.lg}; // 모바일에서도 적절한 간격
+  }
 `;

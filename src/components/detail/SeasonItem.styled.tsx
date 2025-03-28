@@ -1,38 +1,61 @@
 import styled from "styled-components";
+import theme from "../../styles/theme";
 
 export const Container = styled.li`
   flex: 0 0 200px;
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.xs};
-  background-color: ${({ theme }) => theme.colors.surface};
-  padding: ${({ theme }) => theme.spacing.base};
-  border-radius: ${({ theme }) => theme.radius.sm};
-  position: relative; /* ✅ 위로 띄우기 준비 */
-  z-index: 0; /* ✅ 기본은 낮게 */
-  transform-origin: bottom; /* ✅ 위쪽으로 커지게 */
-  cursor: pointer;
-  transition: all 0.25s ease;
+  border-radius: ${theme.borderRadius.medium};
+  background-color: ${theme.colors.background.card};
+  overflow: hidden;
+  transition: ${theme.transition.default};
+  box-shadow: ${theme.boxShadow.card};
+  position: relative;
+  /* 충분한 여백 확보를 위한 마진 추가 */
+  margin: ${theme.spacing.sm} 0;
 
   &:hover {
-    background-color: #3a3a3a; /* surface보다 약간 밝은 톤 */
+    transform: scale(1.05);
+    transform-origin: center;
+    box-shadow: ${theme.boxShadow.hover};
+    background-color: ${theme.colors.background.hover};
+    z-index: 10; /* 호버 시 다른 요소 위에 표시 */
   }
-`;
 
-export const SeasonTitle = styled.h4`
-  font-size: ${({ theme }) => theme.fontSizes.base};
-  margin-bottom: ${({ theme }) => theme.spacing.xs};
-`;
+  a {
+    display: block;
+    height: 100%;
+  }
 
-export const SeasonInfo = styled.p`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.mutedText};
-  line-height: 1.5;
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    flex: 0 0 160px;
+  }
 `;
 
 export const SeasonImage = styled.img`
   width: 100%;
-  border-radius: ${({ theme }) => theme.radius.sm};
+  aspect-ratio: 2/3;
   object-fit: cover;
-  aspect-ratio: 2 / 3;
+`;
+
+export const SeasonTitle = styled.h4`
+  font-size: ${theme.fontSize.md};
+  font-weight: ${theme.fontWeight.bold};
+  margin: ${theme.spacing.xs} 0;
+  padding: 0 ${theme.spacing.sm};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    font-size: ${theme.fontSize.sm};
+  }
+`;
+
+export const SeasonInfo = styled.p`
+  font-size: ${theme.fontSize.sm};
+  color: ${theme.colors.text.secondary};
+  padding: 0 ${theme.spacing.sm} ${theme.spacing.sm};
+
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    font-size: ${theme.fontSize.xs};
+  }
 `;

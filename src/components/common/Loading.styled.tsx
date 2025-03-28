@@ -1,28 +1,28 @@
 import styled, { keyframes } from "styled-components";
-import { FlexCenter } from "../../styles/shared.styled";
+import theme from "../../styles/theme";
 
 export const Wrapper = styled.div`
-  ${FlexCenter};
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 500px;
-  padding: ${({ theme }) => theme.spacing.lg} 0;
-
-  @media screen and (max-width: 768px) {
-    height: 300px;
-  }
+  padding: ${theme.spacing.xl} 0;
 `;
 
 const spin = keyframes`
-  to {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 `;
 
 export const Spinner = styled.div`
-  width: 64px;
-  height: 64px;
-  border: 6px solid ${({ theme }) => theme.colors.border};
-  border-top-color: ${({ theme }) => theme.colors.accent};
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  animation: ${spin} 1s linear infinite;
+  border-top-color: ${theme.colors.primary};
+  animation: ${spin} 1s ease-in-out infinite;
 `;

@@ -1,85 +1,75 @@
-export const darkTheme = {
+export const theme = {
   colors: {
-    background: "#141414",
-    surface: "#1f1f1f",
-    text: "#ffffff",
-    mutedText: "#b3b3b3",
-    accent: "#e50914", // 넷플릭스 빨강
-    border: "#333",
+    primary: "#E50914", // 넷플릭스 빨간색
+    secondary: "#B81D24", // 넷플릭스 어두운 빨간색
+    background: {
+      main: "#141414", // 넷플릭스 배경색
+      dark: "#000000",
+      light: "#181818",
+      card: "#2F2F2F",
+      hover: "#333333",
+    },
+    text: {
+      primary: "#FFFFFF",
+      secondary: "#B3B3B3",
+      tertiary: "#767676",
+    },
+    border: "#404040",
+    gradient: {
+      dark: "linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0))",
+      light: "linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))",
+    },
   },
-  fontSizes: {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    base: "1rem",
-    lg: "1.25rem",
-    xl: "1.5rem",
-    title: "2rem",
+
+  breakpoints: {
+    mobile: "480px",
+    tablet: "768px",
+    laptop: "1024px",
+    desktop: "1280px",
   },
+
   spacing: {
     xs: "4px",
     sm: "8px",
-    base: "16px",
+    md: "16px",
     lg: "24px",
     xl: "32px",
     xxl: "48px",
   },
-  radius: {
-    sm: "4px",
-    base: "8px",
-    lg: "12px",
+
+  borderRadius: {
+    small: "4px",
+    medium: "8px",
+    large: "16px",
   },
-  shadows: {
-    card: "0 4px 8px rgba(0, 0, 0, 0.3)",
-    hover: "0 8px 20px rgba(255, 255, 255, 0.1)",
+
+  boxShadow: {
+    card: "0 2px 10px rgba(0, 0, 0, 0.3)",
+    hover: "0 5px 15px rgba(0, 0, 0, 0.5)",
   },
-  layout: {
-    header: {
-      desktop: 146,
-      mobile: 204,
-    },
-    footer: 69,
+
+  transition: {
+    default: "all 0.2s ease-in-out",
+    slow: "all 0.3s ease-in-out",
+    fast: "all 0.1s ease-in-out",
+  },
+
+  fontSize: {
+    xs: "0.75rem", // 12px
+    sm: "0.875rem", // 14px
+    md: "1rem", // 16px
+    lg: "1.125rem", // 18px
+    xl: "1.25rem", // 20px
+    xxl: "1.5rem", // 24px
+    xxxl: "2rem", // 32px
+  },
+
+  fontWeight: {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    bold: 700,
   },
 };
 
-export const lightTheme = {
-  colors: {
-    background: "#ffffff",
-    surface: "#f5f5f5",
-    text: "#121212",
-    mutedText: "#444",
-    accent: "#e50914",
-    border: "#ddd",
-  },
-  fontSizes: {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    base: "1rem",
-    lg: "1.25rem",
-    xl: "1.5rem",
-    title: "2rem",
-  },
-  spacing: {
-    xs: "4px",
-    sm: "8px",
-    base: "16px",
-    lg: "24px",
-    xl: "32px",
-    xxl: "48px",
-  },
-  radius: {
-    sm: "4px",
-    base: "8px",
-    lg: "12px",
-  },
-  shadows: {
-    card: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    hover: "0 8px 20px rgba(0, 0, 0, 0.15)",
-  },
-  layout: {
-    header: {
-      desktop: 146,
-      mobile: 204,
-    },
-    footer: 69,
-  },
-};
+export default theme;

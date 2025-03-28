@@ -1,223 +1,139 @@
 import styled from "styled-components";
+import theme from "../../styles/theme";
 
 export const AuthContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: ${({ theme }) => theme.spacing.base};
-  background-color: ${({ theme }) => theme.colors.background};
-  position: relative;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: ${theme.spacing.xl};
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: ${theme.borderRadius.medium};
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("/images/hero-bg.jpg");
-    background-size: cover;
-    background-position: center;
-    opacity: 0.3;
-    z-index: -1;
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: ${theme.spacing.lg};
   }
 `;
 
-export const AuthTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.accent};
-  font-size: ${({ theme }) => theme.fontSizes.title};
-  font-weight: 700;
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+export const AuthTitle = styled.h2`
+  font-size: ${theme.fontSize.xxl};
+  color: ${theme.colors.text.primary};
+  margin-bottom: ${theme.spacing.xl};
   text-align: center;
 
-  @media (max-width: 768px) {
-    font-size: ${({ theme }) => theme.fontSizes.xl};
-    margin-bottom: ${({ theme }) => theme.spacing.base};
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    font-size: ${theme.fontSize.xl};
+    margin-bottom: ${theme.spacing.lg};
   }
 `;
 
 export const AuthForm = styled.form`
-  width: 100%;
-  max-width: 400px;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.base};
-  background-color: ${({ theme }) => theme.colors.surface};
-  padding: ${({ theme }) => theme.spacing.xl};
-  border-radius: ${({ theme }) => theme.radius.base};
-  box-shadow: ${({ theme }) => theme.shadows.card};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-
-  @media (max-width: 768px) {
-    padding: ${({ theme }) => theme.spacing.lg};
-    max-width: 90%;
-  }
-
-  @media (max-width: 480px) {
-    padding: ${({ theme }) => theme.spacing.base};
-    gap: ${({ theme }) => theme.spacing.sm};
-  }
+  gap: ${theme.spacing.md};
 `;
 
 export const Input = styled.input`
   width: 100%;
-  padding: ${({ theme }) => theme.spacing.base};
-  background-color: ${({ theme }) => theme.colors.background};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.radius.sm};
-  color: ${({ theme }) => theme.colors.text};
-  font-size: ${({ theme }) => theme.fontSizes.base};
-  outline: none;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s;
+  padding: ${theme.spacing.md};
+  background-color: #333;
+  border: none;
+  border-radius: ${theme.borderRadius.small};
+  color: ${theme.colors.text.primary};
+  font-size: ${theme.fontSize.md};
 
   &:focus {
-    border-color: ${({ theme }) => theme.colors.accent};
-    box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+    outline: 2px solid ${theme.colors.text.secondary};
   }
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.mutedText};
+    color: ${theme.colors.text.tertiary};
   }
 
-  @media (max-width: 480px) {
-    padding: ${({ theme }) => theme.spacing.sm};
-    font-size: ${({ theme }) => theme.fontSizes.sm};
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: ${theme.spacing.sm};
+    font-size: ${theme.fontSize.sm};
   }
 `;
 
 export const Button = styled.button`
-  padding: ${({ theme }) => theme.spacing.base};
-  background-color: ${({ theme }) => theme.colors.accent};
-  color: #fff;
+  width: 100%;
+  padding: ${theme.spacing.md};
+  background-color: ${theme.colors.primary};
+  color: white;
+  font-weight: ${theme.fontWeight.bold};
+  font-size: ${theme.fontSize.md};
+  border-radius: ${theme.borderRadius.small};
   border: none;
-  border-radius: ${({ theme }) => theme.radius.sm};
-  font-size: ${({ theme }) => theme.fontSizes.base};
-  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: ${({ theme }) => theme.spacing.base};
+  transition: ${theme.transition.default};
+  margin-top: ${theme.spacing.sm};
 
   &:hover {
-    background-color: #c2070f;
+    background-color: ${theme.colors.secondary};
   }
 
-  &:disabled {
-    background-color: #666;
-    cursor: not-allowed;
-  }
-
-  @media (max-width: 480px) {
-    padding: ${({ theme }) => theme.spacing.sm};
-    font-size: ${({ theme }) => theme.fontSizes.sm};
-  }
-`;
-
-export const SocialButton = styled.button`
-  padding: ${({ theme }) => theme.spacing.base};
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: ${({ theme }) => theme.radius.sm};
-  font-size: ${({ theme }) => theme.fontSizes.base};
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-
-  &:hover {
-    background-color: #444;
-  }
-
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  @media (max-width: 480px) {
-    padding: ${({ theme }) => theme.spacing.sm};
-    font-size: ${({ theme }) => theme.fontSizes.sm};
-
-    svg {
-      width: 16px;
-      height: 16px;
-    }
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: ${theme.spacing.sm};
+    font-size: ${theme.fontSize.sm};
   }
 `;
 
 export const ErrorMessage = styled.p`
-  color: ${({ theme }) => theme.colors.accent};
-  background-color: rgba(229, 9, 20, 0.1);
-  padding: ${({ theme }) => theme.spacing.sm};
-  border-radius: ${({ theme }) => theme.radius.sm};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  text-align: center;
-  margin: ${({ theme }) => theme.spacing.sm} 0;
-
-  @media (max-width: 480px) {
-    font-size: ${({ theme }) => theme.fontSizes.xs};
-    padding: ${({ theme }) => theme.spacing.xs};
-  }
-`;
-
-export const SwitchContainer = styled.div`
-  margin-top: ${({ theme }) => theme.spacing.base};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.mutedText};
-  text-align: center;
-`;
-
-export const SwitchLink = styled.span`
-  color: ${({ theme }) => theme.colors.accent};
-  cursor: pointer;
-  margin-left: ${({ theme }) => theme.spacing.xs};
-
-  &:hover {
-    text-decoration: underline;
-  }
+  color: ${theme.colors.primary};
+  font-size: ${theme.fontSize.sm};
+  margin-top: ${theme.spacing.xs};
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.base};
-  margin-top: ${({ theme }) => theme.spacing.base};
+  gap: ${theme.spacing.md};
+  margin-top: ${theme.spacing.md};
 
-  @media (max-width: 480px) {
-    gap: ${({ theme }) => theme.spacing.sm};
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    gap: ${theme.spacing.sm};
   }
 `;
 
-export const Divider = styled.div`
+export const SocialButton = styled.button`
   display: flex;
   align-items: center;
-  margin: ${({ theme }) => theme.spacing.base} 0;
+  justify-content: center;
+  gap: ${theme.spacing.sm};
+  width: 100%;
+  padding: ${theme.spacing.md};
+  background-color: #333;
+  color: ${theme.colors.text.primary};
+  font-size: ${theme.fontSize.md};
+  border-radius: ${theme.borderRadius.small};
+  border: none;
+  cursor: pointer;
+  transition: ${theme.transition.default};
 
-  &::before,
-  &::after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  &:hover {
+    background-color: #444;
   }
 
-  span {
-    padding: 0 ${({ theme }) => theme.spacing.base};
-    color: ${({ theme }) => theme.colors.mutedText};
-    font-size: ${({ theme }) => theme.fontSizes.sm};
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: ${theme.spacing.sm};
+    font-size: ${theme.fontSize.sm};
   }
+`;
 
-  @media (max-width: 480px) {
-    margin: ${({ theme }) => theme.spacing.sm} 0;
+export const SwitchContainer = styled.div`
+  margin-top: ${theme.spacing.lg};
+  text-align: center;
+  color: ${theme.colors.text.secondary};
+  font-size: ${theme.fontSize.sm};
+`;
 
-    span {
-      padding: 0 ${({ theme }) => theme.spacing.sm};
-      font-size: ${({ theme }) => theme.fontSizes.xs};
-    }
+export const SwitchLink = styled.span`
+  color: ${theme.colors.text.primary};
+  cursor: pointer;
+  margin-left: ${theme.spacing.sm};
+  text-decoration: underline;
+
+  &:hover {
+    color: ${theme.colors.primary};
   }
 `;

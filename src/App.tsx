@@ -7,7 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
 import { ThemeProvider } from "styled-components";
-import { darkTheme } from "./styles/theme";
+import theme from "./styles/theme";
 import SeasonDetail from "./components/season/SeasonDetail";
 import SignPage from "./pages/SignPage";
 
@@ -15,7 +15,7 @@ function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Routes>
             <Route path="/" element={<Layout />}>
